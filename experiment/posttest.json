@@ -2,37 +2,156 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "The anatomical length of the scapula is measured between which two landmarks?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Acromion and coracoid",
+        "b": "Glenoid cavity and inferior angle",
+        "c": "Superior angle and inferior angle",
+        "d": "Medial border and lateral border"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. These processes are not used for measuring the anatomical length.",
+        "b": "Incorrect. The glenoid cavity is not the upper landmark for anatomical length.",
+        "c": "Correct. The anatomical length of the scapula is measured from the superior angle to the inferior angle.",
+        "d": "Incorrect. These borders are used for breadth-related measurements."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Which instrument is used to measure the anatomical breadth of the scapula?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Osteometric board",
+        "b": "Measuring tape",
+        "c": "Sliding or spreading caliper",
+        "d": "Goniometer"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. An osteometric board is mainly used for measuring the length of long bones.",
+        "b": "Incorrect. Measuring tapes are not sufficiently precise for this osteometric measurement.",
+        "c": "Correct. Sliding or spreading calipers are used to measure the anatomical breadth of the scapula accurately.",
+        "d": "Incorrect. A goniometer is used for measuring angles."
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The length of the spine of the scapula is measured from:",
+      "answers": {
+        "a": "Superior angle to inferior angle",
+        "b": "Acromion to coracoid",
+        "c": "Root of spine to base of acromion",
+        "d": "Glenoid cavity to inferior angle"
+      },
+      "explanations": {
+        "a": "Incorrect. This measures the anatomical length of the scapula.",
+        "b": "Incorrect. These are separate processes of the scapula.",
+        "c": "Correct. The spine length is measured from its root to the base of the acromion.",
+        "d": "Incorrect. These landmarks are not used for measuring the spine."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The length of the glenoid fossa is measured in which direction?",
+      "answers": {
+        "a": "Medio-lateral",
+        "b": "Antero-posterior",
+        "c": "Supero-inferior",
+        "d": "Oblique"
+      },
+      "explanations": {
+        "a": "Incorrect. Medio-lateral measurement represents breadth.",
+        "b": "Incorrect. The glenoid fossa length is not measured in the antero-posterior direction.",
+        "c": "Correct. The length of the glenoid fossa is measured in the supero-inferior direction.",
+        "d": "Incorrect. There is no standard oblique measurement for glenoid length."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Breadth of the glenoid fossa refers to the maximum:",
+      "answers": {
+        "a": "Vertical distance",
+        "b": "Diagonal distance",
+        "c": "Antero-posterior distance",
+        "d": "Medio-lateral distance"
+      },
+      "explanations": {
+        "a": "Incorrect. Vertical distance represents length.",
+        "b": "Incorrect. Diagonal distance is not the standard measurement.",
+        "c": "Correct. Glenoid breadth is measured as the maximum antero-posterior distance of the articular surface.",
+        "d": "Incorrect. Medio-lateral is not the standard glenoid breadth measurement."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The supraspinous angle of the scapula is measured between:",
+      "answers": {
+        "a": "Superior border and medial border",
+        "b": "Lateral border and spine",
+        "c": "Superior border and spine of scapula",
+        "d": "Inferior border and spine"
+      },
+      "explanations": {
+        "a": "Incorrect. These borders form the superior angle of the scapula.",
+        "b": "Incorrect. These structures do not define the supraspinous angle.",
+        "c": "Correct. The supraspinous angle is formed between the superior border and the spine of the scapula.",
+        "d": "Incorrect. These landmarks are unrelated to the supraspinous angle."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The infraspinous angle of the scapula is formed between the spine and the:",
+      "answers": {
+        "a": "Superior border",
+        "b": "Medial border",
+        "c": "Lateral (axillary) border",
+        "d": "Inferior angle"
+      },
+      "explanations": {
+        "a": "Incorrect. This forms the supraspinous angle.",
+        "b": "Incorrect. The medial border is not used for this angle.",
+        "c": "Correct. The infraspinous angle is formed between the spine and the lateral (axillary) border of the scapula.",
+        "d": "Incorrect. The inferior angle is a point, not a border forming this angle."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which instrument is used to measure supraspinous and infraspinous angles?",
+      "answers": {
+        "a": "Sliding caliper",
+        "b": "Spreading caliper",
+        "c": "Osteometric board",
+        "d": "Goniometer"
+      },
+      "explanations": {
+        "a": "Incorrect. Sliding calipers measure linear distances.",
+        "b": "Incorrect. Spreading calipers measure distances between projecting points.",
+        "c": "Incorrect. Osteometric boards are used for measuring bone lengths.",
+        "d": "Correct. A goniometer is the standard instrument used to measure anatomical angles."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "While measuring the breadth of the glenoid fossa, which structure should be excluded?",
+      "answers": {
+        "a": "Articular surface",
+        "b": "Glenoid cavity",
+        "c": "Glenoid rim and surrounding bone",
+        "d": "Supraglenoid tubercle"
+      },
+      "explanations": {
+        "a": "Incorrect. The articular surface is the structure being measured.",
+        "b": "Incorrect. The glenoid cavity itself is the area of interest.",
+        "c": "Incorrect. The measurement is confined to the articular margins, excluding surrounding non-articular bone.",
+        "d": "Correct. The supraglenoid tubercle is excluded because it is not part of the articular surface of the glenoid fossa."
+      },
+      "correctAnswer": "d",
       "difficulty": "beginner"
     }
   ]
