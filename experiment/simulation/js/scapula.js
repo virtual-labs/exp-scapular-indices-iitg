@@ -56,13 +56,13 @@ const REAL_SCAPULA = {
 
 /* AUTO POSITIONING OF SCAPULA */
 const BONE_POSES = {
-    length:      { left: "1px", top: "80px",  rotate:  90 },
-    breadth:     { left: "80px", top: "160px", rotate: 90 },
-    spine:       { left: "100px", top: "160px", rotate: 0 },
-    glenoid_len: { left: "-100px", top: "140px", rotate: 90 },
-    glenoid_br:  { left: "120px", top: "140px", rotate: 15 },
-    supra:       { left: "130px", top: "120px", rotate: 0 },
-    infra:       { left: "130px", top: "120px", rotate: 0 }
+    length:      { left: "200px", top: "80px",  rotate:  90 },
+    breadth:     { left: "200px", top: "160px", rotate: 90 },
+    spine:       { left: "200px", top: "160px", rotate: 0 },
+    glenoid_len: { left: "200px", top: "140px", rotate: 90 },
+    glenoid_br:  { left: "200px", top: "140px", rotate: 15 },
+    supra:       { left: "200px", top: "120px", rotate: 0 },
+    infra:       { left: "200px", top: "120px", rotate: 0 }
 };
 
 /* ==============================
@@ -284,7 +284,7 @@ document.addEventListener("mousemove", e => {
         const fixedJawX = 40;
         const distancePx = x - fixedJawX;
 
-        currentReading = distancePx * CM_PER_PIXEL;
+        currentReading = distancePx * (1/40.9) ;
     }
         /* GONIOMETER BODY */
         else if (dragged.id === "goniometer") {
@@ -515,10 +515,10 @@ function createScale() {
 
     scale.innerHTML = "";
 
-    const PX_PER_CM = 25;
+    const PX_PER_CM = 34.5;
 
     /* 40 cm scale with 0.1 cm divisions */
-    for (let i = 0; i <= 150; i++) {
+    for (let i = 0; i <= 200; i++) {
 
         const value = i / 10;
 
