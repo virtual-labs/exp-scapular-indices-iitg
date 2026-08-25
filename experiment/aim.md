@@ -1,1 +1,1 @@
-### Aim of the experiment
+AIM: The aim of scapula measurement is to study sexual, racial, and individual variations, to understand functional adaptation of the shoulder girdle, and to assist in anthropological and forensic identification of human skeletal remains.
