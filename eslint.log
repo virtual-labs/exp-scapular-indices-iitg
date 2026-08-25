@@ -1,0 +1,7 @@
+
+/home/runner/work/exp-scapular-indices-iitg/exp-scapular-indices-iitg/experiment/simulation/js/scapula.js
+  442:10  warning  'checkMeasurement' is defined but never used  no-unused-vars
+  454:10  warning  'checkIndices' is defined but never used      no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
