@@ -4,26 +4,45 @@
 
 const CM_PER_PIXEL = 0.0369;
 
+/* TRUE (hidden) VALUES */
+const REAL_SCAPULA = {
+    length:      12.55,
+    breadth:     11.53,
+    spine:       9.88,
+    glenoid_len: 2.92,
+    glenoid_br:  2.10
+};
+
+/* ACCEPTED RANGE = true value ± tolerance (cm)
+   Increase a number to make that measurement more lenient. */
+const TOL = {
+    length:      0.50,   // 12.05 – 13.05
+    breadth:     0.50,   // 11.03 – 12.03
+    spine:       0.40,   //  9.48 – 10.28  (9.72 and 9.78 are accepted)
+    glenoid_len: 0.30,   //  2.62 –  3.22
+    glenoid_br:  0.30    //  1.80 –  2.40
+};
+
 /* SCAPULA TARGET VALUES */
 const TARGETS = {
     length: {
-        val: 12.25, tol: 1, unit: "cm",
+        val: REAL_SCAPULA.length, tol: TOL.length, unit: "cm",
         instr: "Measure maximum length of scapula from superior to inferior angle using osteometric board."
     },
     breadth: {
-        val: 11.76, tol: 1, unit: "cm",
+        val: REAL_SCAPULA.breadth, tol: TOL.breadth, unit: "cm",
         instr: "Measure maximum breadth of scapula using sliding calipers."
     },
     spine: {
-        val: 9.88, tol: 0.8, unit: "cm",
+        val: REAL_SCAPULA.spine, tol: TOL.spine, unit: "cm",
         instr: "Measure length of scapular spine using sliding calipers."
     },
     glenoid_len: {
-        val: 2.92, tol: 0.3, unit: "cm",
+        val: REAL_SCAPULA.glenoid_len, tol: TOL.glenoid_len, unit: "cm",
         instr: "Measure supero-inferior diameter of the glenoid cavity."
     },
     glenoid_br: {
-        val: 2.32, tol: 0.3, unit: "cm",
+        val: REAL_SCAPULA.glenoid_br, tol: TOL.glenoid_br, unit: "cm",
         instr: "Measure antero-posterior diameter of the glenoid cavity."
     },
     supra: {
@@ -42,23 +61,11 @@ const TARGETS = {
     }
 };
 
-/* ==============================
-   REAL SCAPULA VALUES (HIDDEN)
-============================== */
-
-const REAL_SCAPULA = {
-    length: 12.25,
-    breadth: 11.76,
-    spine: 9.88,
-    glenoid_len: 2.99,
-    glenoid_br: 2.32
-};
-
 /* AUTO POSITIONING OF SCAPULA */
 const BONE_POSES = {
     length:      { left: "200px", top: "80px",  rotate:  90 },
     breadth:     { left: "200px", top: "160px", rotate: 90 },
-    spine:       { left: "200px", top: "160px", rotate: 0 },
+    spine:       { left: "200px", top: "160px", rotate: -22 },
     glenoid_len: { left: "200px", top: "140px", rotate: 90 },
     glenoid_br:  { left: "200px", top: "140px", rotate: 15 },
     supra:       { left: "200px", top: "120px", rotate: 0 },
@@ -118,8 +125,6 @@ function setMode(mode, event) {
     } else {
         document.getElementById("controls").style.display = "block";
     }
-
-    document.getElementById("bone").style.display = "block";
 
     document.getElementById("bone").style.display = "block";
 
@@ -237,7 +242,6 @@ document.addEventListener("mousemove", e => {
         const workspace = document.getElementById("workspace").getBoundingClientRect();
         /* BOARD */
         if (currentMode === "length" && dragged.id === "movable-wall") {
-            const workspace = document.getElementById("workspace").getBoundingClientRect();
             let x = e.clientX - workspace.left;
             x = Math.max(120, Math.min(x, 820));
             dragged.style.left = x + "px";
@@ -254,7 +258,6 @@ document.addEventListener("mousemove", e => {
             dragged.style.left = x + "px";
             dragged.style.top  = y + "px";
         }
-        /* CALIPER */
         /* MOVE WHOLE CALIPER */
         else if (dragged.id === "tool-caliper") {
 
@@ -334,116 +337,72 @@ function getRotation(el) {
     if (!el.style.transform) return 0;
     return parseFloat(el.style.transform.replace("rotate(", "").replace("deg)", ""));
 }
+
 /* ==============================
-   CORRECT SCAPULA INDICES
+   RANGE CHECK
+   A value is accepted if it lies within
+   true value ± tolerance (see TOL above)
 ============================== */
 
-const CORRECT_INDICES = {
+function inRange(value, key) {
+    return Math.abs(value - REAL_SCAPULA[key]) <= TOL[key] + 1e-9;
+}
 
-    ans_scap: 92.24,
-
-    ans_glenoid: 71.92,
-
-    ans_spine_br: 85.68,
-
-    ans_spine_len: 78.72
-};
 /* ==============================
    CALCULATE + VALIDATE
+   numKey / denKey = which measurement each box should contain
 ============================== */
 
-function calculate(numId, denId, ansId) {
+function calculate(numId, denId, ansId, numKey, denKey) {
 
-    const num = parseFloat(
-        document.getElementById(numId).value
-    );
-
-    const den = parseFloat(
-        document.getElementById(denId).value
-    );
-
-    const ans =
-        document.getElementById(ansId);
+    const num = parseFloat(document.getElementById(numId).value);
+    const den = parseFloat(document.getElementById(denId).value);
+    const ans = document.getElementById(ansId);
 
     /* Empty fields */
-    if (
-        isNaN(num) ||
-        isNaN(den) ||
-        den === 0
-    ) {
+    if (isNaN(num) || isNaN(den) || den === 0) {
 
         ans.value = "";
-
         ans.style.background = "#fff8dc";
         ans.style.border = "2px solid #f1c40f";
         ans.style.color = "black";
-
         return;
     }
 
     /* Calculate */
     const result = (num * 100) / den;
-
     ans.value = result.toFixed(2);
 
-    /* Check */
-    const correct = CORRECT_INDICES[ansId];
+    /* Green only if BOTH entered values are inside their accepted range */
+    const ok = inRange(num, numKey) && inRange(den, denKey);
 
-    const tolerance = 0.2;
-
-    if (Math.abs(result - correct) <= tolerance) {
-
-        ans.style.background = "#d4edda";
-        ans.style.border = "3px solid green";
-        ans.style.color = "green";
-
-    } else {
-
-        ans.style.background = "#f8d7da";
-        ans.style.border = "3px solid red";
-        ans.style.color = "red";
-    }
+    ans.style.background = ok ? "#d4edda" : "#f8d7da";
+    ans.style.border     = ok ? "3px solid green" : "3px solid red";
+    ans.style.color      = ok ? "green" : "red";
 }
+
 /* ==============================
    LIVE UPDATE
 ============================== */
 
 document.addEventListener("input", () => {
 
-    calculate(
-        "scap_num",
-        "scap_den",
-        "ans_scap"
-    );
-
-    calculate(
-        "glenoid_num",
-        "glenoid_den",
-        "ans_glenoid"
-    );
-
-    calculate(
-        "spine_num1",
-        "spine_den1",
-        "ans_spine_br"
-    );
-
-    calculate(
-        "spine_num2",
-        "spine_den2",
-        "ans_spine_len" 
-    );
+    calculate("scap_num",    "scap_den",    "ans_scap",      "breadth",    "length");
+    calculate("glenoid_num", "glenoid_den", "ans_glenoid",   "glenoid_br", "glenoid_len");
+    calculate("spine_num1",  "spine_den1",  "ans_spine_br",  "spine",      "breadth");
+    calculate("spine_num2",  "spine_den2",  "ans_spine_len", "spine",      "length");
 
 });
+
 /* ==============================
-   CHECK RESULT
+   CHECK RESULT (measurement pages)
 ============================== */
 
 function checkMeasurement() {
     const t = TARGETS[currentMode];
     const fb = document.getElementById("feedback");
 
-    if (Math.abs(currentReading - t.val) <= t.tol) {
+    if (Math.abs(parseFloat(currentReading) - t.val) <= t.tol + 1e-9) {
         fb.style.color = "green";
         fb.innerText = "✔ Correct measurement.";
     } else {
@@ -451,63 +410,7 @@ function checkMeasurement() {
         fb.innerText = `✖ Incorrect. Accepted value ≈ ${t.val} ${t.unit}`;
     }
 }
-function checkIndices() {
 
-    const tolerance = 0.5;
-
-    const L = REAL_SCAPULA.length;
-    const B = REAL_SCAPULA.breadth;
-    const S = REAL_SCAPULA.spine;
-    const GL = REAL_SCAPULA.glenoid_len;
-    const GB = REAL_SCAPULA.glenoid_br;
-
-    const correct = {
-        scap: (B * 100) / L,
-        glenoid: (GB * 100) / GL,
-        spine_br: (S * 100) / B,
-        spine_len: (S * 100) / L
-    };
-
-    const user = {
-        scap: parseFloat(document.getElementById("ans_scap").value),
-        glenoid: parseFloat(document.getElementById("ans_glenoid").value),
-        spine_br: parseFloat(document.getElementById("ans_spine_br").value),
-        spine_len: parseFloat(document.getElementById("ans_spine_len").value)
-    };
-
-    let score = 0;
-    let total = 4;
-
-    for (let key in correct) {
-
-        const input = document.getElementById("ans_" + key);
-
-        if (Math.abs(user[key] - correct[key]) <= tolerance) {
-
-            input.style.border = "3px solid green";
-            input.style.backgroundColor = "#e6ffe6";
-            score++;
-
-        } else {
-
-            input.style.border = "3px solid red";
-            input.style.backgroundColor = "#ffe6e6";
-        }
-    }
-
-    const feedback = document.getElementById("indexFeedback");
-
-    if (score === total) {
-        feedback.style.color = "green";
-        feedback.innerHTML =
-            `✔ Excellent! All calculations correct. (${score}/4)`;
-    }
-    else {
-        feedback.style.color = "red";
-        feedback.innerHTML =
-            `✖ Some calculations are incorrect.<br>Score: ${score}/4`;
-    }
-}
 function createScale() {
 
     const scale =
@@ -517,7 +420,7 @@ function createScale() {
 
     const PX_PER_CM = 34.5;
 
-    /* 40 cm scale with 0.1 cm divisions */
+    /* 20 cm scale with 0.1 cm divisions */
     for (let i = 0; i <= 200; i++) {
 
         const value = i / 10;
@@ -529,8 +432,6 @@ function createScale() {
 
         tick.style.left =
             (value * PX_PER_CM) + "px";
-
-        /* Tick types */
 
         /* Every 1 cm */
         if (i % 10 === 0) {
@@ -565,46 +466,7 @@ function createScale() {
         scale.appendChild(tick);
     }
 }
-// function createCaliperScale() {
 
-//     const scale = document.querySelector(".caliper-scale");
-
-//     scale.innerHTML = "";
-
-//     const PX_PER_CM = 20;
-
-//     for (let i = 0; i <= 20; i++) {
-
-//         const tick = document.createElement("div");
-
-//         tick.classList.add("cal-tick");
-
-//         tick.style.left = (i * PX_PER_CM) + "px";
-
-//         if (i % 10 === 0) {
-//             tick.classList.add("large");
-//         }
-//         else if (i % 5 === 0) {
-//             tick.classList.add("medium");
-//         }
-//         else {
-//             tick.classList.add("small");
-//         }
-
-//         scale.appendChild(tick);
-
-//         /* labels every 1 cm */
-//         const label = document.createElement("div");
-
-//         label.classList.add("cal-label");
-
-//         label.style.left = (i * PX_PER_CM - 4) + "px";
-
-//         label.innerText = i;
-
-//         scale.appendChild(label);
-//     }
-// }
 /* ==============================
    GONIOMETER SCALE
 ============================== */
@@ -716,5 +578,4 @@ bone.addEventListener("dblclick", () => {
 
 setMode("length");
 createScale();
-// createCaliperScale();
 createGonioScale();
