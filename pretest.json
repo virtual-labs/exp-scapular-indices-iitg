@@ -1,0 +1,158 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "The scapula is classified as a:",
+      "answers": {
+        "a": "Long bone",
+        "b": "Short bone",
+        "c": "Flat bone",
+        "d": "Irregular bone"
+      },
+      "explanations": {
+        "a": "Incorrect. Long bones include the femur and humerus.",
+        "b": "Incorrect. Short bones are mainly found in the wrist and ankle.",
+        "c": "Correct. The scapula is a flat bone that provides broad surfaces for muscle attachment and protects the posterior thoracic wall.",
+        "d": "Incorrect. Irregular bones include vertebrae and certain skull bones."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The scapula articulates directly with which bone?",
+      "answers": {
+        "a": "Sternum",
+        "b": "Ribs",
+        "c": "Humerus",
+        "d": "Vertebrae"
+      },
+      "explanations": {
+        "a": "Incorrect. The scapula has no direct articulation with the sternum.",
+        "b": "Incorrect. The scapula glides over the ribs but does not form a true joint with them.",
+        "c": "Correct. The glenoid cavity of the scapula articulates with the head of the humerus to form the shoulder joint.",
+        "d": "Incorrect. The scapula does not directly articulate with the vertebrae."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The glenoid cavity of the scapula articulates with the:",
+      "answers": {
+        "a": "Head of radius",
+        "b": "Head of ulna",
+        "c": "Head of humerus",
+        "d": "Head of clavicle"
+      },
+      "explanations": {
+        "a": "Incorrect. The radius articulates with the capitulum of the humerus.",
+        "b": "Incorrect. The ulna articulates with the trochlea of the humerus.",
+        "c": "Correct. The glenoid cavity receives the head of the humerus, forming the glenohumeral joint.",
+        "d": "Incorrect. The clavicle articulates with the acromion process, not the glenoid cavity."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The spine of the scapula divides the dorsal surface into:",
+      "answers": {
+        "a": "Subscapular and infraspinous fossae",
+        "b": "Supraspinous and subscapular fossae",
+        "c": "Supraspinous and infraspinous fossae",
+        "d": "Infraspinous and glenoid fossae"
+      },
+      "explanations": {
+        "a": "Incorrect. The subscapular fossa is located on the costal surface.",
+        "b": "Incorrect. The subscapular fossa is not on the dorsal surface.",
+        "c": "Correct. The scapular spine divides the dorsal surface into the supraspinous and infraspinous fossae.",
+        "d": "Incorrect. The glenoid cavity is not a fossa formed by the scapular spine."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which muscle is attached to the subscapular fossa?",
+      "answers": {
+        "a": "Supraspinatus",
+        "b": "Infraspinatus",
+        "c": "Teres minor",
+        "d": "Subscapularis"
+      },
+      "explanations": {
+        "a": "Incorrect. Supraspinatus originates from the supraspinous fossa.",
+        "b": "Incorrect. Infraspinatus originates from the infraspinous fossa.",
+        "c": "Incorrect. Teres minor arises from the lateral border of the scapula.",
+        "d": "Correct. The subscapularis muscle originates from the subscapular fossa on the anterior surface of the scapula."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The acromion process of the scapula articulates with the:",
+      "answers": {
+        "a": "Sternum",
+        "b": "Humerus",
+        "c": "Clavicle",
+        "d": "First rib"
+      },
+      "explanations": {
+        "a": "Incorrect. The sternum articulates with the clavicle, not the acromion.",
+        "b": "Incorrect. The humerus articulates with the glenoid cavity.",
+        "c": "Correct. The acromion articulates with the lateral end of the clavicle to form the acromioclavicular joint.",
+        "d": "Incorrect. The first rib does not articulate with the acromion."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Sex determination using scapula is based mainly on:",
+      "answers": {
+        "a": "Color of bone",
+        "b": "Texture of bone",
+        "c": "Size and robustness",
+        "d": "Position in the body"
+      },
+      "explanations": {
+        "a": "Incorrect. Bone color is not a criterion for sex estimation.",
+        "b": "Incorrect. Bone texture alone is not reliable.",
+        "c": "Correct. Sex estimation from the scapula primarily relies on its size, dimensions, and robustness.",
+        "d": "Incorrect. The position of the scapula is similar in both sexes."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The inferior angle of the scapula lies approximately at the level of the:",
+      "answers": {
+        "a": "4th rib",
+        "b": "5th rib",
+        "c": "7th rib",
+        "d": "9th rib"
+      },
+      "explanations": {
+        "a": "Incorrect. The inferior angle is located lower than the 4th rib.",
+        "b": "Incorrect. It lies below the 5th rib.",
+        "c": "Correct. The inferior angle of the scapula lies approximately opposite the 7th rib (or the T7 vertebral level).",
+        "d": "Incorrect. The 9th rib is too low."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "From an anthropological perspective, scapular measurements are most useful for:",
+      "answers": {
+        "a": "Age estimation only",
+        "b": "Disease diagnosis",
+        "c": "Sex and population variation studies",
+        "d": "Blood group identification"
+      },
+      "explanations": {
+        "a": "Incorrect. The scapula is not primarily used for age estimation.",
+        "b": "Incorrect. Although pathology can affect the scapula, anthropological measurements are not mainly for disease diagnosis.",
+        "c": "Correct. Scapular dimensions are commonly used in forensic anthropology for sex estimation and studies of population variation.",
+        "d": "Incorrect. Blood group cannot be determined from skeletal morphology."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    }
+  ]
+}
